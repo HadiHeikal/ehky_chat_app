@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "506053933565",
+    "project_id": "ehky-chat-app",
+    "storage_bucket": "ehky-chat-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506053933565:android:2d1197a171a41981d78194",
+        "android_client_info": {
+          "package_name": "com.example.ehky_chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvDNuF7F6cuvhmAmESP00-OReyagNjWVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
