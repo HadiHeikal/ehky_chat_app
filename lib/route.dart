@@ -1,5 +1,6 @@
 import 'package:ehky_chat_app/features/auth/views/login_view.dart';
 import 'package:ehky_chat_app/features/auth/views/signup_view.dart';
+import 'package:ehky_chat_app/features/home/views/home_view.dart';
 import 'package:ehky_chat_app/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class EhkyApp extends StatelessWidget {
         'splash': (context) => const SplashView(),
         'login': (context) => const LoginView(),
         'signup': (context) => const SignupView(),
+        'home': (context) => const HomeView(),
       },
     );
   }

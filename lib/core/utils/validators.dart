@@ -1,4 +1,25 @@
 abstract final class Validators {
+  /// Validates the user's full name.
+  static String? name(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Full name is required';
+    }
+    return null;
+  }
+
+  /// Validates the user's phone number.
+  static String? phone(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Phone number is required';
+    }
+    final phoneRegex = RegExp(r'^\d{10}$');
+    if (!phoneRegex.hasMatch(value.trim())) {
+      return 'Please enter a valid phone number';
+    }
+    return null;
+  }
+
+  /// Validates the user's email format.
   static String? email(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Email is required';
@@ -10,6 +31,7 @@ abstract final class Validators {
     return null;
   }
 
+  /// Validates the user's password strength.
   static String? password(String? value) {
     if (value == null || value.isEmpty) {
       return 'Password is required';
@@ -20,6 +42,7 @@ abstract final class Validators {
     return null;
   }
 
+  /// Validates that the confirm password matches the source password.
   static String? confirmPassword(String? value, String sourcePassword) {
     if (value == null || value.isEmpty) {
       return 'Please confirm password';

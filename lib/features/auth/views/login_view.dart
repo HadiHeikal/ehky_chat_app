@@ -1,3 +1,4 @@
+import 'package:ehky_chat_app/features/auth/widgets/custom_asktext.dart';
 import 'package:ehky_chat_app/features/auth/widgets/custom_button.dart';
 import 'package:ehky_chat_app/features/auth/widgets/custom_textformfield.dart';
 import 'package:ehky_chat_app/shared/custom_text.dart';
@@ -73,23 +74,10 @@ class _SignupViewState extends State<LoginView> {
                   Gap(50),
                   CustomButton(text: 'Login', onTap: () {}),
                   Gap(20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomText(
-                        text: 'Don\'t have an account?',
-                        fontWeight: FontWeight.w500,
-                      ),
-                      Gap(5),
-                      GestureDetector(
-                        onTap: () => Navigator.pushNamed(context, 'signup'),
-                        child: CustomText(
-                          text: 'Sign Up',
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff771F98),
-                        ),
-                      ),
-                    ],
+                  CustomAsktext(
+                    asktext: 'Don\'t have an account?',
+                    text: 'Sign up',
+                    onTap: () => Navigator.pushNamed(context, 'signup'),
                   ),
                 ],
               ),
