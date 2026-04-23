@@ -12,7 +12,7 @@ abstract final class AppTheme {
         primary: AppColors.primary,
         secondary: AppColors.secondary,
         error: AppColors.error,
-        surface: AppColors.surface,
+        surface: AppColors.background,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
