@@ -67,7 +67,11 @@ class _HomeRootViewState extends State<HomeRootView> {
           ),
         ),
       ),
-      body: PageView(controller: pageController, children: pages),
+      body: PageView(
+        controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
+        children: pages,
+      ),
     );
   }
 }

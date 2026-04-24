@@ -12,7 +12,7 @@ abstract final class Validators {
     if (value == null || value.trim().isEmpty) {
       return 'Phone number is required';
     }
-    final phoneRegex = RegExp(r'^\d{10}$');
+    final phoneRegex = RegExp(r'^\d{110}$');
     if (!phoneRegex.hasMatch(value.trim())) {
       return 'Please enter a valid phone number';
     }

@@ -1,3 +1,4 @@
+import 'package:ehky_chat_app/core/constants/app_colors.dart';
 import 'package:ehky_chat_app/core/utils/validators.dart';
 import 'package:ehky_chat_app/features/auth/widgets/custom_asktext.dart';
 import 'package:ehky_chat_app/features/auth/widgets/custom_button.dart';
@@ -53,6 +54,7 @@ class _SignupViewState extends State<SignupView> {
     // Validate the form before attempting sign up
     if (!_formKey.currentState!.validate()) return;
 
+    // show loding spinner
     setState(() => _isLoading = true);
     try {
       // Attempt to create user with email and password
@@ -65,12 +67,18 @@ class _SignupViewState extends State<SignupView> {
       // Update display name for the newly created user
       await credential.user?.updateDisplayName(_nameController.text.trim());
 
+      // Sign out because we want the user to log in manually after sign up
+      await FirebaseAuth.instance.signOut();
+
       if (!mounted) return;
 
-      // Show success message
+      // Show success message and navigate to login
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Account created successfully!')),
+        const SnackBar(
+          content: Text('Account created successfully! Please login.'),
+        ),
       );
+      Navigator.pushNamedAndRemoveUntil(context, 'login', (route) => false);
     } on FirebaseAuthException catch (e) {
       if (!mounted) return;
 
@@ -99,7 +107,7 @@ class _SignupViewState extends State<SignupView> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.background,
         body: Stack(
           children: [
             SingleChildScrollView(
@@ -146,7 +154,7 @@ class _SignupViewState extends State<SignupView> {
                       labletext: 'Email Address',
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
-                      onchanged: (value) {
+                      onChanged: (value) {
                         // Clear the Firebase error once the user starts typing again
                         if (_firebaseEmailError != null) {
                           setState(() => _firebaseEmailError = null);
@@ -182,7 +190,7 @@ class _SignupViewState extends State<SignupView> {
                       labletext: 'Password',
                       controller: _passwordController,
                       obscureText: true,
-                      onchanged: (value) {
+                      onChanged: (value) {
                         // Clear the Firebase error once the user starts typing again
                         if (_firebasePasswordError != null) {
                           setState(() => _firebasePasswordError = null);
@@ -222,7 +230,7 @@ class _SignupViewState extends State<SignupView> {
                     CustomAsktext(
                       asktext: 'Already have an account?',
                       text: ' Login',
-                      onTap: () => Navigator.pop(context),
+                      onTap: () => Navigator.pushNamed(context, 'login'),
                     ),
                     Gap(20),
                   ],
