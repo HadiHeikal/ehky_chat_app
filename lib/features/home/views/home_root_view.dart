@@ -29,6 +29,7 @@ class _HomeRootViewState extends State<HomeRootView> {
           topRight: Radius.circular(20),
         ),
         child: Container(
+          height: 110,
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
