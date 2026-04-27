@@ -1,25 +1,8 @@
 import 'package:ehky_chat_app/core/constants/app_colors.dart';
 import 'package:ehky_chat_app/features/chat/views/chat_view.dart';
+import 'package:ehky_chat_app/features/home/data/models/chat_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
-
-class ChatModel {
-  final String name;
-  final String message;
-  final String time;
-  final int unreadCount;
-  final bool isRead;
-  final String avatar;
-
-  ChatModel({
-    required this.name,
-    required this.message,
-    required this.time,
-    this.unreadCount = 0,
-    this.isRead = false,
-    required this.avatar,
-  });
-}
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -32,6 +15,7 @@ class _HomeViewState extends State<HomeView> {
   final _searchController = TextEditingController();
   int _selectedTab = 0;
 
+  //Dummy chats data
   final List<ChatModel> _dummyChats = [
     ChatModel(
       name: "Robert Fox",
@@ -190,7 +174,8 @@ class _HomeViewState extends State<HomeView> {
                                 const Gap(16),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         chat.name,
@@ -277,6 +262,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
+  // tab widget
   Widget _buildTab(int index, String title) {
     final isSelected = _selectedTab == index;
     return GestureDetector(
@@ -297,11 +283,7 @@ class _HomeViewState extends State<HomeView> {
           ),
           const Gap(4),
           if (isSelected)
-            Container(
-              height: 2,
-              width: 40,
-              color: AppColors.primary,
-            )
+            Container(height: 2, width: 40, color: AppColors.primary)
           else
             const Gap(2),
         ],
