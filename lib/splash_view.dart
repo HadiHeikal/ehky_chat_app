@@ -18,10 +18,11 @@ class _SplashViewState extends State<SplashView> {
   }
 
   Future<void> _navigateToNext() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     final prefs = await SharedPreferences.getInstance();
-    final bool onboardingCompleted = prefs.getBool('onboarding_completed') ?? false;
-    
+    final bool onboardingCompleted =
+        prefs.getBool('onboarding_completed') ?? false;
+
     if (mounted) {
       if (onboardingCompleted) {
         Navigator.pushReplacementNamed(context, 'login');
@@ -74,17 +75,17 @@ class _SplashViewState extends State<SplashView> {
                 ),
               ),
             ),
-            
+
             // Main content
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Spacer(flex: 2),
-                // Logo
+                // Logo (splash screen logo) and title
                 Image.asset(
-                  'assets/images/splash_image.png',
-                  width: 120,
-                  height: 120,
+                  'assets/images/Ehky_splash_logo.png',
+                  width: 300,
+                  height: 300,
                   errorBuilder: (context, error, stackTrace) => const Icon(
                     Icons.chat_bubble,
                     size: 100,
@@ -92,27 +93,13 @@ class _SplashViewState extends State<SplashView> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Title
-                const Text(
-                  'Ehky',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-                const SizedBox(height: 10),
                 // Subtitle
                 const Text(
                   'Get Closer To EveryOne',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.white70),
                 ),
                 const Spacer(flex: 2),
-                
+
                 // Loading bar
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 80.0),
@@ -128,10 +115,7 @@ class _SplashViewState extends State<SplashView> {
                 const SizedBox(height: 15),
                 const Text(
                   'Loading...',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.white),
                 ),
                 const SizedBox(height: 50),
               ],
